@@ -1,4 +1,5 @@
 import styles from './header.module.css'
+import StatisticSvg from './statisticsSvg'
 
 interface Props {
   setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,7 +20,9 @@ export default function Header ({ setShowStatistics }: Props) {
                   fontSize: '30px'
                 }}>WORDLE</li>
                 <li>
-                    <button onClick={handleShowStatistics}>Stadisticas</button>
+                    <button onClick={handleShowStatistics}>
+                      <StatisticSvg width='32' height='30'/>
+                    </button>
                     <button>toggle</button>
                 </li>
             </ul>

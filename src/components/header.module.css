@@ -11,3 +11,13 @@
     list-style: none;
     padding: 18px
 }
+.ulStyle > li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ulStyle > li > button {  
+    background-color: #262b3c00;
+    border: none;
+}
