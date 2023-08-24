@@ -11,24 +11,36 @@
 }
 
 .modalContainer {
-    background-color: white;
+    color: white;
+    background-color: #262B3C;
     border-radius: 3px;
     padding: 10px;
-    width: 500px;
-    min-height: 300 px;
+    width: 480px;
+    height: 480px;
+    border: 1px solid gray;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
 }
-/* 
+
 .modalContainer > h2{
     text-align: center;
     font-size: 36px;
-} */
-
-.puzzle {
-    width: 200px;
-    margin: 0 auto;
-    font-size: 30px;
 }
 
-.puzzleWord {
+.containesGameCount {
     display: flex;
+    justify-content: space-around;
+}
+
+.gameCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameCount > h3{
+    font-size: 30px;
 }
