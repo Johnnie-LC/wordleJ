@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const ModalP = ({ statusGame, completedWords, solution, showModal, setShowModal }: Props) => {
-  console.log({ statusGame, completedWords, solution })
+  // console.log({ statusGame, completedWords, solution })
 
   return (
         <>

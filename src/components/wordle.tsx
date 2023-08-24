@@ -23,7 +23,7 @@ export default function Worlde ({ words }: Props) {
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
-  const { timer } = useTimerInMinutes(5)
+  const { timer } = useTimerInMinutes(0.2)
 
   const [showModal, setShowModal] = useState<boolean>(true)
 
@@ -35,6 +35,11 @@ export default function Worlde ({ words }: Props) {
 
   useEffect(() => {
     if (timer === 0) {
+      setCompletedWords([])
+      setTurn(1)
+      setCurrentWord('')
+      setGameStatus(GameStatus.Playing)
+      setKeyboardStatus(KEYS.map(key => ({ letter: key, status: '' })))
       setRandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
     }
   }, [timer])
