@@ -98,6 +98,7 @@ export default function Worlde ({ words }: Props) {
 
   return (
     <>
+      <div style={{ background: 'white' }}>WORDLE</div>
       <div className={styles.mainContainer}>
         {
           completedWords.map((word, i) => (
