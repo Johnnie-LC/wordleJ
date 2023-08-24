@@ -2,7 +2,7 @@
 
 .row {
     display: flex;
-    gap: gap;
-    margin-bottom: gap;
+    gap: calc(gap + 6px);
+    margin-bottom: calc(gap + 6px);
     text-transform: uppercase;
 }
