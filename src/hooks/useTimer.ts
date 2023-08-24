@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export default function useTimer (time: number) {
+export default function useTimerInMinutes (time: number) {
   const [timer, setTimer] = useState(time * 60)
 
   useEffect(() => {

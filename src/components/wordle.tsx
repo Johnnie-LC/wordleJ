@@ -8,30 +8,30 @@ import { KEYS } from './constants'
 import styles from './wordle.module.css'
 import Keyboard from './keyboard'
 import ShowTime from './time'
-import useTimer from '../hooks/useTimer'
+import useTimerInMinutes from '../hooks/useTimer'
 
 interface Props {
   words: string[]
 }
 
 export default function Worlde ({ words }: Props) {
-  const [randomWord, setrandomWord] = useState<string>('')
+  const [randomWord, setRandomWord] = useState<string>('')
   const [turn, setTurn] = useState<number>(1)
   const [currentWord, setCurrentWord] = useState<string>('')
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
-  const { timer } = useTimer(1)
+  const { timer } = useTimerInMinutes(1)
 
   useEffect(() => {
     if (words.length > 0) {
-      setrandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
+      setRandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
     }
   }, [words])
 
   useEffect(() => {
     if (timer === 0) {
-      setrandomWord(words[Math.floor(Math.random() * words.length)])
+      setRandomWord(words[Math.floor(Math.random() * words.length)])
     }
   }, [timer])
 
@@ -120,7 +120,7 @@ export default function Worlde ({ words }: Props) {
         }
       </div>
       <Keyboard keys={keyboardStatus} onKeyPressed={onKeyPressed} />
-      <ShowTime words={words} timer={timer}/>
+      <ShowTime word={randomWord} timer={timer}/>
     </>
   )
 }
