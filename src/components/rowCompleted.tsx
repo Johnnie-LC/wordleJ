@@ -1,7 +1,6 @@
 import Box from './box'
 import { type BoxStatus, type SetKeyboardStatus } from './types.d'
 import styles from './row.module.css'
-// import { useEffect } from 'react'
 
 interface Props {
   word: string

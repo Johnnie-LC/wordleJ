@@ -1,5 +1,5 @@
 .keybase {
-    background-color: #333;
+    background-color: #565F7E;
     cursor: pointer;
     border: none;
     border-radius: 3px;
@@ -16,6 +16,7 @@
     width: 570px;
     margin: 0 auto;
     gap: 5px;
+    background: #DADCE008;
 }
 
 .key{
