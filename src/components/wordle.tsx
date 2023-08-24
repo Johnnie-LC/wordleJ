@@ -10,6 +10,7 @@ import Keyboard from './keyboard'
 import ShowTime from './time'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
+import ModalP from './modal'
 
 interface Props {
   words: string[]
@@ -100,6 +101,21 @@ export default function Worlde ({ words }: Props) {
   return (
     <>
       <Header />
+      {
+        gameStatus === GameStatus.Won
+          ? (
+        <ModalP
+        statusGame='won'
+        completedWords={completedWords}
+        solution={randomWord} />)
+          : gameStatus === GameStatus.Lost
+            ? (
+            <ModalP
+            statusGame='lost'
+            completedWords={completedWords}
+            solution={randomWord} />)
+            : null
+      }
       <div className={styles.mainContainer}>
         {
           completedWords.map((word, i) => (

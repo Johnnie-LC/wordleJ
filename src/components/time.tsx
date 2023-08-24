@@ -8,7 +8,7 @@ export default function ShowTime ({ word, timer }: Props) {
         <p>
           Tiempo restante: <strong>{Math.floor(timer / 60) } minutos, {timer % 60} segundos</strong>
         </p>
-        <span>{word}</span>
+        <span>La palabra era: {word}</span>
       </div>
   )
 }
