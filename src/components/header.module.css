@@ -1,0 +1,13 @@
+.headerContainerStyle{
+    background: #DADCE008;
+    border-radius: 10px;
+    color: #DADCE0;
+}
+
+.ulStyle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 18px
+}

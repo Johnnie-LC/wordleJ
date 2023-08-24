@@ -1,21 +1,15 @@
-export default function Header () {
-  const ulStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    listStyle: 'none',
-    padding: '18px'
-  }
+import styles from './header.module.css'
 
-  const headerContainerStyle = {
-    background: '#DADCE008',
-    borderRadius: '10px',
-    color: '#DADCE0'
-  }
+interface Props {
+  setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function Header ({ setShowStatistics }: Props) {
+  const handleShowStatistics = () => { setShowStatistics(item => !item) }
 
   return (
-        <div style={headerContainerStyle}>
-            <ul style={ulStyle}>
+        <div className={styles.headerContainerStyle}>
+            <ul className={styles.ulStyle}>
                 <li style={{
                   paddingRight: '65px'
                 }}>
@@ -25,7 +19,7 @@ export default function Header () {
                   fontSize: '30px'
                 }}>WORDLE</li>
                 <li>
-                    <button>Stadisticas</button>
+                    <button onClick={handleShowStatistics}>Stadisticas</button>
                     <button>toggle</button>
                 </li>
             </ul>

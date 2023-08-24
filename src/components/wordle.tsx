@@ -10,7 +10,7 @@ import Keyboard from './keyboard'
 // import ShowTime from './time'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
-import ModalP from './modal'
+import Statistics from './modal'
 
 interface Props {
   words: string[]
@@ -28,7 +28,7 @@ export default function Worlde ({ words }: Props) {
   const [winCounter, setWinCounter] = useState(0)
   const [amountOfGames, setAmountOfGames] = useState(0)
 
-  const [showModal, setShowModal] = useState<boolean>(true)
+  const [showStatistics, setShowStatistics] = useState<boolean>(false)
 
   useEffect(() => {
     if (gameStatus === GameStatus.Won) {
@@ -36,6 +36,7 @@ export default function Worlde ({ words }: Props) {
     }
 
     if (gameStatus === GameStatus.Lost || gameStatus === GameStatus.Won) {
+      setShowStatistics(true)
       setAmountOfGames(amountOfGames + 1)
     }
   }, [gameStatus])
@@ -48,7 +49,7 @@ export default function Worlde ({ words }: Props) {
 
   useEffect(() => {
     if (timer === 0) {
-      setShowModal(true)
+      setShowStatistics(true)
       setCompletedWords([])
       setTurn(1)
       setCurrentWord('')
@@ -121,26 +122,37 @@ export default function Worlde ({ words }: Props) {
 
   return (
     <>
-      <Header />
+      <Header setShowStatistics={setShowStatistics}/>
       {
-        gameStatus === GameStatus.Won
-          ? (
-        <ModalP
+        gameStatus === GameStatus.Playing && showStatistics && (
+          <Statistics
               statusGame='won'
               winCounter={winCounter}
               amountOfGames={amountOfGames}
               solution={randomWord}
-              showModal={showModal}
-              setShowModal={setShowModal} timer={timer} />)
+              showModal={showStatistics}
+              setShowModal={setShowStatistics} timer={timer} />
+        )
+      }
+      {
+        gameStatus === GameStatus.Won
+          ? (
+        <Statistics
+              statusGame='won'
+              winCounter={winCounter}
+              amountOfGames={amountOfGames}
+              solution={randomWord}
+              showModal={showStatistics}
+              setShowModal={setShowStatistics} timer={timer} />)
           : gameStatus === GameStatus.Lost
             ? (
-            <ModalP
+            <Statistics
                 statusGame='lost'
                 winCounter={winCounter}
                 amountOfGames={amountOfGames}
                 solution={randomWord}
-                showModal={showModal}
-                setShowModal={setShowModal} timer={timer} />)
+                showModal={showStatistics}
+                setShowModal={setShowStatistics} timer={timer} />)
             : null
       }
       <div className={styles.mainContainer}>
