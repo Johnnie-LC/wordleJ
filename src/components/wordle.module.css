@@ -1,0 +1,6 @@
+@import './variables.module.css';
+
+.mainContainer {
+    width: calc((size * 5) + (gap * 5));
+    margin: 100px auto;
+}
