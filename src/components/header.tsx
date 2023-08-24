@@ -16,10 +16,14 @@ export default function Header () {
   return (
         <div style={headerContainerStyle}>
             <ul style={ulStyle}>
-                <li>
+                <li style={{
+                  paddingRight: '65px'
+                }}>
                 <button>Questions</button>
                 </li>
-                <li>WORDLE</li>
+                <li style={{
+                  fontSize: '30px'
+                }}>WORDLE</li>
                 <li>
                     <button>Stadisticas</button>
                     <button>toggle</button>
