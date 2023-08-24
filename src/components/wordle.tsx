@@ -25,6 +25,8 @@ export default function Worlde ({ words }: Props) {
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
   const { timer } = useTimerInMinutes(5)
 
+  const [showModal, setShowModal] = useState<boolean>(true)
+
   useEffect(() => {
     if (words.length > 0) {
       setRandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
@@ -107,13 +109,18 @@ export default function Worlde ({ words }: Props) {
         <ModalP
         statusGame='won'
         completedWords={completedWords}
-        solution={randomWord} />)
+        solution={randomWord}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        />)
           : gameStatus === GameStatus.Lost
             ? (
             <ModalP
-            statusGame='lost'
-            completedWords={completedWords}
-            solution={randomWord} />)
+                statusGame='lost'
+                completedWords={completedWords}
+                solution={randomWord}
+                showModal={showModal}
+                setShowModal={setShowModal} />)
             : null
       }
       <div className={styles.mainContainer}>
