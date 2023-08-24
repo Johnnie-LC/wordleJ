@@ -2,5 +2,5 @@
 
 .mainContainer {
     width: calc((size * 5) + (gap * 5));
-    margin: 50px auto;
+    margin: 16px auto;
 }

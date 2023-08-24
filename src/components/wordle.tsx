@@ -9,6 +9,7 @@ import styles from './wordle.module.css'
 import Keyboard from './keyboard'
 import ShowTime from './time'
 import useTimerInMinutes from '../hooks/useTimer'
+import Header from './header'
 
 interface Props {
   words: string[]
@@ -98,7 +99,7 @@ export default function Worlde ({ words }: Props) {
 
   return (
     <>
-      <div style={{ background: 'white' }}>WORDLE</div>
+      <Header />
       <div className={styles.mainContainer}>
         {
           completedWords.map((word, i) => (
