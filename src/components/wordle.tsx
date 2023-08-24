@@ -23,7 +23,7 @@ export default function Worlde ({ words }: Props) {
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
-  const { timer } = useTimerInMinutes(0.2)
+  const { timer } = useTimerInMinutes(5)
 
   const [showModal, setShowModal] = useState<boolean>(true)
 
