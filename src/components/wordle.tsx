@@ -7,7 +7,7 @@ import { useWindow } from '../hooks/useWindow'
 import { KEYS } from './constants'
 import styles from './wordle.module.css'
 import Keyboard from './keyboard'
-import ShowTime from './time'
+// import ShowTime from './time'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
 import ModalP from './modal'
@@ -23,9 +23,22 @@ export default function Worlde ({ words }: Props) {
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
-  const { timer } = useTimerInMinutes(5)
+  const { timer } = useTimerInMinutes(0.2)
+
+  const [winCounter, setWinCounter] = useState(0)
+  const [amountOfGames, setAmountOfGames] = useState(0)
 
   const [showModal, setShowModal] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (gameStatus === GameStatus.Won) {
+      setWinCounter(winCounter + 1)
+    }
+
+    if (gameStatus === GameStatus.Lost || gameStatus === GameStatus.Won) {
+      setAmountOfGames(amountOfGames + 1)
+    }
+  }, [gameStatus])
 
   useEffect(() => {
     if (words.length > 0) {
@@ -35,6 +48,7 @@ export default function Worlde ({ words }: Props) {
 
   useEffect(() => {
     if (timer === 0) {
+      setShowModal(true)
       setCompletedWords([])
       setTurn(1)
       setCurrentWord('')
@@ -113,7 +127,8 @@ export default function Worlde ({ words }: Props) {
           ? (
         <ModalP
               statusGame='won'
-              completedWords={completedWords}
+              winCounter={winCounter}
+              amountOfGames={amountOfGames}
               solution={randomWord}
               showModal={showModal}
               setShowModal={setShowModal} timer={timer} />)
@@ -121,7 +136,8 @@ export default function Worlde ({ words }: Props) {
             ? (
             <ModalP
                 statusGame='lost'
-                completedWords={completedWords}
+                winCounter={winCounter}
+                amountOfGames={amountOfGames}
                 solution={randomWord}
                 showModal={showModal}
                 setShowModal={setShowModal} timer={timer} />)

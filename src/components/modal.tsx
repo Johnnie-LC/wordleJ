@@ -2,14 +2,15 @@ import styles from './modal.module.css'
 
 interface Props {
   statusGame: 'won' | 'lost'
-  completedWords: string[]
+  winCounter: number
+  amountOfGames: number
   solution: string
   showModal: boolean
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
   timer: number
 }
 
-export const ModalP = ({ statusGame, completedWords, solution, showModal, setShowModal, timer }: Props) => {
+export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showModal, setShowModal, timer }: Props) => {
   // console.log({ statusGame, completedWords, solution })
 
   const handleCLoseModal = () => { setShowModal(false) }
@@ -24,11 +25,11 @@ export const ModalP = ({ statusGame, completedWords, solution, showModal, setSho
                   <h2>Estadisticas</h2>
                   <section className={styles.containesGameCount}>
                     <div className={styles.gameCount}>
-                      <h3>8</h3>
+                      <h3>{amountOfGames}</h3>
                       <span>Juagadas</span>
                     </div>
                     <div className={styles.gameCount}>
-                      <h3>2</h3>
+                      <h3>{winCounter}</h3>
                       <span>Victorias</span>
                     </div>
                   </section>
