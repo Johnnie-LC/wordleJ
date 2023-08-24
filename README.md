@@ -18,7 +18,7 @@ This is a clone of the popular word guessing game Wordle. The object of the game
 
 ## installation
 
-1. Clone the repository:
+1. Clone the repository: https://github.com/Johnnie-LC/wordleJ.git
 
 ## TO LOCAL RUN
    Use node v20.5.0
