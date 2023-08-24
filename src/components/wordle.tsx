@@ -31,7 +31,7 @@ export default function Worlde ({ words }: Props) {
 
   useEffect(() => {
     if (timer === 0) {
-      setRandomWord(words[Math.floor(Math.random() * words.length)])
+      setRandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
     }
   }, [timer])
 
