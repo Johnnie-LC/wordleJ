@@ -1,4 +1,4 @@
-# Wordle Clone
+# Wordle Game Challenge
 
 This is a clone of the popular word guessing game Wordle. The object of the game is to guess a five letter word in six tries. Each try, the player enters a five-letter word and the game displays a series of green, yellow, and gray letters to indicate whether the letters are in the word and in the correct position, in the word but in the wrong position, or not. in the word at all.
 
