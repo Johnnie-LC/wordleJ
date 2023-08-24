@@ -12,7 +12,7 @@ export const Instructions = ({ showModal, setShowModal }: Props) => {
           {
             showModal && (
               <div className={styles.modalViewContainer}>
-                <div className={styles.modalContainer}>
+                <div className={styles.modalContainerInstructions}>
                     Instructions
                     <section>
                         <button className={styles.acceptButton} onClick={handleCLoseModal}>Jugar</button>
