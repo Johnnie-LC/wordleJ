@@ -25,6 +25,7 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
 
   return (
     <div className={styles.keyboardContainer}>
+        <div className={styles.emptyKey} />
         {
             Array.from(Array(10)).map((_, i) => (
                 <button
@@ -35,7 +36,8 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
                 </button>
             ))
         }
-        {/* <div className={styles.emptyKey} /> */}
+        <div className={styles.emptyKey} />
+        <div className={styles.emptyKeyMiddle} />
         {
             Array.from(Array(10)).map((_, i) => (
                 <button
@@ -62,6 +64,7 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
         <button className={styles.deleteKey} onClick={handleDelete}>
             DELETE
         </button>
+        <div className={styles.emptyKey} />
     </div>
   )
 }

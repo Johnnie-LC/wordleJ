@@ -14,9 +14,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 533px;
+    width: 638px;
     margin: 0 auto;
-    gap: 5px;
+    gap: 9.57px;
     background: #DADCE008;
     padding: 25px 1px;
     border-radius: 10px;
@@ -26,16 +26,20 @@
     composes: keybase;
     width: 44px;
     height: 51px;
+    font-size: 18px;
 }
 
 .emptyKey {
-    width: 25px;
-    height: 70px;
+    width: 44px;
+    height: 51px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+.emptyKeyMiddle {
+    compose:emptyKey;
+    width: 25px; 
+}
 .enterKey { 
     composes: keybase;
     width: 71.78px;
