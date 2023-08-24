@@ -8,14 +8,22 @@ import { KEYS } from './constants'
 import { getWordOfTheDay } from '../service/request'
 import styles from './wordle.module.css'
 import Keyboard from './keyboard'
+import ShowTime from './time'
+import useTimer from '../hooks/useTimer'
 
-export default function Worlde () {
+interface Props {
+  words: string[]
+}
+
+export default function Worlde ({ words }: Props) {
   const [wordOfTheDay, setWordOfTheDay] = useState<string>('')
   const [turn, setTurn] = useState<number>(1)
   const [currentWord, setCurrentWord] = useState<string>('')
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
+  const { timer } = useTimer(1)
+  console.log({ words })
 
   useEffect(() => {
     setWordOfTheDay(getWordOfTheDay() as string)
@@ -106,6 +114,7 @@ export default function Worlde () {
         }
       </div>
       <Keyboard keys={keyboardStatus} onKeyPressed={onKeyPressed} />
+      <ShowTime words={words} timer={timer}/>
     </>
   )
 }

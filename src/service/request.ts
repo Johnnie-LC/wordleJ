@@ -30,3 +30,30 @@ export function isValidWord (word: string) {
 
   return words.includes(word.toLowerCase())
 }
+
+const APIWords = 'data/words.txt'
+
+export const fetchWordsTwo = async () => await fetch(APIWords)
+  .then(async (response) => await response.text())
+  .then((text) => {
+    // const wordsArray = text.split('\n')
+    const wordsArray = text.split(/\s+/)
+    return wordsArray
+  })
+  .catch((error) => {
+    console.log('Error al cargar el archivo:', error)
+  })
+
+export const fetchWords = async () => {
+  try {
+    const response = await fetch(APIWords)
+    if (!response.ok) {
+      throw new Error('Error al cargar el archivo')
+    }
+    const data = await response.text()
+    const wordsArray = data.split(/\s+/)
+    return wordsArray
+  } catch (error) {
+    console.log('Error al cargar el archivo:', error)
+  }
+}
