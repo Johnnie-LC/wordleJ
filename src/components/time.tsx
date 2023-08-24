@@ -3,8 +3,6 @@ interface Props {
   timer: number
 }
 export default function ShowTime ({ words, timer }: Props) {
-  console.log({ words })
-
   return (
       <div style={{ background: 'white' }}>
         <p>

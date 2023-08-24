@@ -5,7 +5,6 @@ import RowEmpty from './rowEmpty'
 import { GameStatus } from './types.d'
 import { useWindow } from '../hooks/useWindow'
 import { KEYS } from './constants'
-import { getWordOfTheDay } from '../service/request'
 import styles from './wordle.module.css'
 import Keyboard from './keyboard'
 import ShowTime from './time'
@@ -16,18 +15,25 @@ interface Props {
 }
 
 export default function Worlde ({ words }: Props) {
-  const [wordOfTheDay, setWordOfTheDay] = useState<string>('')
+  const [randomWord, setrandomWord] = useState<string>('')
   const [turn, setTurn] = useState<number>(1)
   const [currentWord, setCurrentWord] = useState<string>('')
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
   const { timer } = useTimer(1)
-  console.log({ words })
 
   useEffect(() => {
-    setWordOfTheDay(getWordOfTheDay() as string)
-  }, [])
+    if (words.length > 0) {
+      setrandomWord(words[Math.floor(Math.random() * words.length)].toUpperCase())
+    }
+  }, [words])
+
+  useEffect(() => {
+    if (timer === 0) {
+      setrandomWord(words[Math.floor(Math.random() * words.length)])
+    }
+  }, [timer])
 
   const onInput = (letter: string) => {
     const newWord = currentWord + letter
@@ -40,7 +46,7 @@ export default function Worlde ({ words }: Props) {
   }
 
   const onEnter = () => {
-    if (currentWord === wordOfTheDay) {
+    if (currentWord === randomWord) {
       // gano el usuario
       setCompletedWords([...completedWords, currentWord])
       setGameStatus(GameStatus.Won)
@@ -98,7 +104,7 @@ export default function Worlde ({ words }: Props) {
             <RowCompleted
             key={i}
             word={word}
-            solution={wordOfTheDay}
+            solution={randomWord}
             setKeyboardStatus={setKeyboardStatus}/>
           ))
         }
