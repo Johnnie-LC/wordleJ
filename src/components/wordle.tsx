@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { type SetStateAction, useEffect, useState } from 'react'
 import RowCompleted from './rowCompleted'
 import RowCurrent from './rowCurrent'
 import RowEmpty from './rowEmpty'
@@ -11,6 +11,7 @@ import Keyboard from './keyboard'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
 import Statistics from './modal'
+import Instructions from './instructions'
 
 interface Props {
   words: string[]
@@ -29,6 +30,7 @@ export default function Worlde ({ words }: Props) {
   const [amountOfGames, setAmountOfGames] = useState(0)
 
   const [showStatistics, setShowStatistics] = useState<boolean>(false)
+  const [showInstructions, setShowInstructions] = useState<boolean>(true)
 
   useEffect(() => {
     if (gameStatus === GameStatus.Won) {
@@ -122,7 +124,8 @@ export default function Worlde ({ words }: Props) {
 
   return (
     <>
-      <Header setShowStatistics={setShowStatistics}/>
+      <Header setShowStatistics={setShowStatistics} setShowInstructions={setShowInstructions}/>
+      <Instructions showModal={showInstructions} setShowModal={setShowInstructions}/>
       {
         gameStatus === GameStatus.Playing && showStatistics && (
           <Statistics

@@ -5,10 +5,12 @@ import StatisticSvg from './svgComponents/statisticsSvg'
 
 interface Props {
   setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>
+  setShowInstructions: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Header ({ setShowStatistics }: Props) {
+export default function Header ({ setShowStatistics, setShowInstructions }: Props) {
   const handleShowStatistics = () => { setShowStatistics(item => !item) }
+  const handleShowInstructions = () => { setShowInstructions(item => !item) }
 
   return (
         <div className={styles.headerContainerStyle}>
@@ -16,7 +18,7 @@ export default function Header ({ setShowStatistics }: Props) {
                 <li style={{
                   paddingRight: '65px'
                 }}>
-                <button onClick={() => {}}>
+                <button onClick={handleShowInstructions}>
                   <QuestionSvg width='27'/>
                 </button>
                 </li>
