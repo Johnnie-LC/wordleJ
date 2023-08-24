@@ -21,7 +21,7 @@ export default function Worlde ({ words }: Props) {
   const [completedWords, setCompletedWords] = useState<string[]>([])
   const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Playing)
   const [keyboardStatus, setKeyboardStatus] = useState(KEYS.map(key => ({ letter: key, status: '' })))
-  const { timer } = useTimerInMinutes(1)
+  const { timer } = useTimerInMinutes(5)
 
   useEffect(() => {
     if (words.length > 0) {
