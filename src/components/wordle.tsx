@@ -112,12 +112,11 @@ export default function Worlde ({ words }: Props) {
         gameStatus === GameStatus.Won
           ? (
         <ModalP
-        statusGame='won'
-        completedWords={completedWords}
-        solution={randomWord}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        />)
+              statusGame='won'
+              completedWords={completedWords}
+              solution={randomWord}
+              showModal={showModal}
+              setShowModal={setShowModal} timer={timer} />)
           : gameStatus === GameStatus.Lost
             ? (
             <ModalP
@@ -125,7 +124,7 @@ export default function Worlde ({ words }: Props) {
                 completedWords={completedWords}
                 solution={randomWord}
                 showModal={showModal}
-                setShowModal={setShowModal} />)
+                setShowModal={setShowModal} timer={timer} />)
             : null
       }
       <div className={styles.mainContainer}>
@@ -150,7 +149,7 @@ export default function Worlde ({ words }: Props) {
         }
       </div>
       <Keyboard keys={keyboardStatus} onKeyPressed={onKeyPressed} />
-      <ShowTime word={randomWord} timer={timer}/>
+      {/* <ShowTime word={randomWord} timer={timer}/> */}
     </>
   )
 }

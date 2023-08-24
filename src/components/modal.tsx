@@ -6,9 +6,10 @@ interface Props {
   solution: string
   showModal: boolean
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+  timer: number
 }
 
-export const ModalP = ({ statusGame, completedWords, solution, showModal, setShowModal }: Props) => {
+export const ModalP = ({ statusGame, completedWords, solution, showModal, setShowModal, timer }: Props) => {
   // console.log({ statusGame, completedWords, solution })
 
   const handleCLoseModal = () => { setShowModal(false) }
@@ -31,11 +32,17 @@ export const ModalP = ({ statusGame, completedWords, solution, showModal, setSho
                       <span>Victorias</span>
                     </div>
                   </section>
-                  <section>
-                    Siguiente Palabra
+                  {
+                    statusGame === 'lost' && (
+                      <section>La palabra era: {solution}</section>
+                    )
+                  }
+                  <section className={styles.gameCount}>
+                    <span>Siguiente Palabra</span>
+                    <span>{Math.floor(timer / 60) }:{timer % 60}</span>
                   </section>
                   <section>
-                    <button onClick={handleCLoseModal}>Aceptar</button>
+                    <button className={styles.acceptButton} onClick={handleCLoseModal}>Aceptar</button>
                   </section>
               </div>
             </div>
