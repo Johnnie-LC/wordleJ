@@ -26,10 +26,12 @@ export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showMo
                       <h3>{amountOfGames}</h3>
                       <span>Juagadas</span>
                     </div>
+
                     <div className={styles.gameCount}>
                       <h3>{winCounter}</h3>
                       <span>Victorias</span>
                     </div>
+
                   </section>
 
                   {

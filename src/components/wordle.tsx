@@ -7,7 +7,6 @@ import { useWindow } from '../hooks/useWindow'
 import { KEYS } from './constants'
 import styles from './wordle.module.css'
 import Keyboard from './keyboard'
-// import ShowTime from './time'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
 import Statistics from './modal'
@@ -80,7 +79,6 @@ export default function Worlde ({ words }: Props) {
     }
 
     if (turn === 5) {
-      // perdion el usuario
       setCompletedWords([...completedWords, currentWord])
       setGameStatus(GameStatus.Lost)
       return undefined
@@ -180,7 +178,6 @@ export default function Worlde ({ words }: Props) {
         }
       </div>
       <Keyboard keys={keyboardStatus} onKeyPressed={onKeyPressed} />
-      {/* <ShowTime word={randomWord} timer={timer}/> */}
     </>
   )
 }

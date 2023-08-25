@@ -15,16 +15,14 @@ export default function Header ({ setShowStatistics, setShowInstructions }: Prop
   return (
         <div className={styles.headerContainerStyle}>
             <ul className={styles.ulStyle}>
-                <li style={{
-                  paddingRight: '65px'
-                }}>
-                <button onClick={handleShowInstructions}>
-                  <QuestionSvg width='27'/>
-                </button>
+                <li style={{ paddingRight: '65px' }}>
+                  <button onClick={handleShowInstructions}>
+                    <QuestionSvg width='27'/>
+                  </button>
                 </li>
-                <li style={{
-                  fontSize: '30px'
-                }}>WORDLE</li>
+
+                <li style={{ fontSize: '30px' }}>WORDLE</li>
+
                 <li>
                     <button onClick={handleShowStatistics}>
                       <StatisticSvg width='32' height='30'/>
