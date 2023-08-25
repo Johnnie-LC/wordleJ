@@ -26,8 +26,17 @@
 }
 .modalContainerInstructions {
     composes: modalContainer;
+    justify-content: normal;
+    align-items: center;
     width:434px;
     height: 800px;
+    position: relative;
+}
+
+.modalContainerInstructions section:last-child{
+    position: absolute;
+    bottom: 27px;
+    width: 100%;
 }
 
 .modalContainer > h2{

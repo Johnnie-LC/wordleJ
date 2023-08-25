@@ -11,8 +11,6 @@ interface Props {
 }
 
 export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showModal, setShowModal, timer }: Props) => {
-  // console.log({ statusGame, completedWords, solution })
-
   const handleCLoseModal = () => { setShowModal(false) }
 
   return (
@@ -21,8 +19,8 @@ export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showMo
           showModal && (
             <div className={styles.modalViewContainer}>
               <div className={styles.modalContainer}>
-                  {/* <h2>You {statusGame === 'won' ? 'won' : 'lost'}</h2> */}
                   <h2>Estadisticas</h2>
+
                   <section className={styles.containesGameCount}>
                     <div className={styles.gameCount}>
                       <h3>{amountOfGames}</h3>
@@ -33,15 +31,18 @@ export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showMo
                       <span>Victorias</span>
                     </div>
                   </section>
+
                   {
                     statusGame === 'lost' && (
                       <section>La palabra era: {solution}</section>
                     )
                   }
+
                   <section className={styles.gameCount}>
                     <span>Siguiente Palabra</span>
                     <span>{Math.floor(timer / 60) }:{timer % 60}</span>
                   </section>
+
                   <section>
                     <button className={styles.acceptButton} onClick={handleCLoseModal}>Aceptar</button>
                   </section>

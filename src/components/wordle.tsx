@@ -1,4 +1,4 @@
-import { type SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import RowCompleted from './rowCompleted'
 import RowCurrent from './rowCurrent'
 import RowEmpty from './rowEmpty'
@@ -11,7 +11,7 @@ import Keyboard from './keyboard'
 import useTimerInMinutes from '../hooks/useTimer'
 import Header from './header'
 import Statistics from './modal'
-import Instructions from './instructions'
+import Instructions from './instructionsModal'
 
 interface Props {
   words: string[]

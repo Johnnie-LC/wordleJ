@@ -3,13 +3,13 @@ import { type SetKeyboardStatus, type BoxStatus } from './types.d'
 import styles from './box.module.css'
 import { useEffect } from 'react'
 
-interface BoxProps {
+interface Props {
   value: string
   status: BoxStatus
   setKeyboardStatus: SetKeyboardStatus
 }
 
-export default function Box ({ value, status, setKeyboardStatus }: BoxProps) {
+export default function Box ({ value, status, setKeyboardStatus }: Props) {
   useEffect(() => {
     if (status === 'absent' || status === 'present' || status === 'correct') {
       setKeyboardStatus(keys => {
