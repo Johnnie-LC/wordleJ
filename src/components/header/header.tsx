@@ -1,7 +1,7 @@
 import styles from './header.module.css'
-import DisplayModeSvg from './svgComponents/displaymodeSvg'
-import QuestionSvg from './svgComponents/questionsSvg'
-import StatisticSvg from './svgComponents/statisticsSvg'
+import DisplayModeSvg from '../svgComponents/displaymodeSvg'
+import QuestionSvg from '../svgComponents/questionsSvg'
+import StatisticSvg from '../svgComponents/statisticsSvg'
 
 interface Props {
   setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>

@@ -1,4 +1,4 @@
-import styles from './modal.module.css'
+import styles from '../modal.module.css'
 
 interface Props {
   statusGame: 'won' | 'lost'
@@ -10,7 +10,7 @@ interface Props {
   timer: number
 }
 
-export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showModal, setShowModal, timer }: Props) => {
+export const StatisticsModal = ({ statusGame, winCounter, amountOfGames, solution, showModal, setShowModal, timer }: Props) => {
   const handleCLoseModal = () => { setShowModal(false) }
 
   return (
@@ -56,4 +56,4 @@ export const ModalP = ({ statusGame, winCounter, amountOfGames, solution, showMo
   )
 }
 
-export default ModalP
+export default StatisticsModal

@@ -1,4 +1,4 @@
-@import './variables.module.css';
+@import '../variables.module.css';
 
 .box{
     font-size: 2em;

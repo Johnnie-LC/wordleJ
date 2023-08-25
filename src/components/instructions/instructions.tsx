@@ -1,6 +1,6 @@
 import styles from './instruction.module.css'
-import boxStyles from './box.module.css'
-import { type BoxStatus } from './types.d'
+import boxStyles from '../box/box.module.css'
+import { type BoxStatus } from '../types.d'
 
 export default function Instructions () {
   const createArrayBox = (word: string, solution: string, status: BoxStatus, statusAbsent = false) => {

@@ -1,4 +1,4 @@
-import Worlde from './components/wordle'
+import Worlde from './components/wordle/wordle'
 import './App.css'
 import useFetchWords from './hooks/useFetchWords'
 

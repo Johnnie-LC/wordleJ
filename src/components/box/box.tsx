@@ -1,4 +1,4 @@
-import { type SetKeyboardStatus, type BoxStatus } from './types.d'
+import { type SetKeyboardStatus, type BoxStatus } from '../types.d'
 
 import styles from './box.module.css'
 import { useEffect } from 'react'
