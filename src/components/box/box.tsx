@@ -1,7 +1,8 @@
 import { type SetKeyboardStatus, type BoxStatus } from '../types.d'
-
+import stylesLight from './boxLight.module.css'
 import styles from './box.module.css'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { ThemeContext } from '../../context/themeContext'
 
 interface Props {
   value: string
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export default function Box ({ value, status, setKeyboardStatus }: Props) {
+  const { isDarkmode } = useContext(ThemeContext)
+
   useEffect(() => {
     if (status === 'absent' || status === 'present' || status === 'correct') {
       setKeyboardStatus(keys => {
@@ -24,5 +27,5 @@ export default function Box ({ value, status, setKeyboardStatus }: Props) {
     }
   }, [status])
 
-  return <div className={styles[status]}>{value}</div>
+  return <div className={isDarkmode ? styles[status] : stylesLight[status]}>{value}</div>
 }

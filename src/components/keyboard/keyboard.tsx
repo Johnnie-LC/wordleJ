@@ -1,4 +1,7 @@
+import { useContext } from 'react'
+import { ThemeContext } from '../../context/themeContext'
 import styles from './keyboard.module.css'
+import stylesLight from './keyboardLightMode.module.css'
 
 type Keys = Array<{
   letter: string
@@ -11,6 +14,8 @@ interface Props {
 }
 
 export default function Keyboard ({ keys, onKeyPressed }: Props) {
+  const { isDarkmode } = useContext(ThemeContext)
+
   const handleInput = (e: any) => {
     onKeyPressed(e.target.textContent)
   }
@@ -21,11 +26,16 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
     onKeyPressed('BACKSPACE')
   }
 
-  const changeStyle = (i: number) => ((keys[i].status.length > 0) ? styles[keys[i].status] : styles.key)
+  const changeStyle = (i: number) => {
+    if (isDarkmode) {
+      return ((keys[i].status.length > 0) ? styles[keys[i].status] : styles.key)
+    }
+    return ((keys[i].status.length > 0) ? stylesLight[keys[i].status] : stylesLight.key)
+  }
 
   return (
-    <div className={styles.keyboardContainer}>
-        <div className={styles.emptyKey} />
+    <div className={isDarkmode ? styles.keyboardContainer : stylesLight.keyboardContainer}>
+        <div className={isDarkmode ? styles.emptyKey : stylesLight.emptyKey} />
         {
             Array.from(Array(10)).map((_, i) => (
                 <button
@@ -36,8 +46,8 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
                 </button>
             ))
         }
-        <div className={styles.emptyKey} />
-        <div className={styles.emptyKeyMiddle} />
+        <div className={isDarkmode ? styles.emptyKey : stylesLight.emptyKey} />
+        <div className={isDarkmode ? styles.emptyKeyMiddle : stylesLight.emptyKeyMiddle} />
         {
             Array.from(Array(10)).map((_, i) => (
                 <button
@@ -48,7 +58,7 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
                 </button>
             ))
         }
-        <button className={styles.enterKey} onClick={handleEnter}>
+        <button className={isDarkmode ? styles.enterKey : stylesLight.enterKey} onClick={handleEnter}>
             ENTER
         </button>
         {
@@ -61,10 +71,10 @@ export default function Keyboard ({ keys, onKeyPressed }: Props) {
                 </button>
             ))
         }
-        <button className={styles.deleteKey} onClick={handleDelete}>
+        <button className={isDarkmode ? styles.deleteKey : stylesLight.deleteKey} onClick={handleDelete}>
             DELETE
         </button>
-        <div className={styles.emptyKey} />
+        <div className={isDarkmode ? styles.emptyKey : stylesLight.emptyKey} />
     </div>
   )
 }

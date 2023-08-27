@@ -4,6 +4,12 @@
     color: #DADCE0;
 }
 
+.headerContainerLigthStyle {
+    background: #F3F3F3;
+    border-radius: 10px;
+    color: #202537;
+}
+
 .ulStyle{
     display: flex;
     justify-content: space-between;
@@ -21,3 +27,5 @@
     background-color: #262b3c00;
     border: none;
 }
+
+

@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react'
-import RowCompleted from '../rowComponents/rowCompleted'
-import RowCurrent from '../rowComponents/rowCurrent'
-import RowEmpty from '../rowComponents/rowEmpty'
+import { useContext, useEffect, useState } from 'react'
 import { GameStatus } from '../types.d'
 import { useWindow } from '../../hooks/useWindow'
 import { KEYS } from '../constants'
-import styles from './wordle.module.css'
 import Keyboard from '../keyboard/keyboard'
 import useTimerInMinutes from '../../hooks/useTimer'
 import Header from '../header/header'
 import Statistics from '../statistics/statistics'
 import Instructions from '../instructions/instructionsModal'
+import GameBox from '../gameBox/gameBox'
+import styles from './wordle.module.css'
+import { ThemeContext } from '../../context/themeContext'
 
 interface Props {
   words: string[]
 }
 
 export default function Worlde ({ words }: Props) {
+  const { isDarkmode } = useContext(ThemeContext)
+
   const [randomWord, setRandomWord] = useState<string>('')
   const [turn, setTurn] = useState<number>(1)
   const [currentWord, setCurrentWord] = useState<string>('')
@@ -121,7 +122,8 @@ export default function Worlde ({ words }: Props) {
   useWindow('keydown', handleKeyDown)
 
   return (
-    <>
+    <div className={isDarkmode ? styles.wordleMainContainer : styles.wordleMainContainerLight}>
+      <div className={styles.wordleContainer}>
       <Header setShowStatistics={setShowStatistics} setShowInstructions={setShowInstructions}/>
       <Instructions showModal={showInstructions} setShowModal={setShowInstructions}/>
       {
@@ -136,48 +138,37 @@ export default function Worlde ({ words }: Props) {
         )
       }
       {
-        gameStatus === GameStatus.Won
-          ? (
-        <Statistics
+        gameStatus === GameStatus.Won && (
+          <Statistics
               statusGame='won'
               winCounter={winCounter}
               amountOfGames={amountOfGames}
               solution={randomWord}
               showModal={showStatistics}
-              setShowModal={setShowStatistics} timer={timer} />)
-          : gameStatus === GameStatus.Lost
-            ? (
-            <Statistics
+              setShowModal={setShowStatistics} timer={timer} />
+        )
+      }
+      {
+        gameStatus === GameStatus.Lost && (
+          <Statistics
                 statusGame='lost'
                 winCounter={winCounter}
                 amountOfGames={amountOfGames}
                 solution={randomWord}
                 showModal={showStatistics}
-                setShowModal={setShowStatistics} timer={timer} />)
-            : null
+                setShowModal={setShowStatistics} timer={timer} />
+        )
       }
-      <div className={styles.mainContainer}>
-        {
-          completedWords.map((word, i) => (
-            <RowCompleted
-            key={i}
-            word={word}
-            solution={randomWord}
-            setKeyboardStatus={setKeyboardStatus}/>
-          ))
-        }
-        {
-          gameStatus === GameStatus.Playing
-            ? <RowCurrent word={currentWord}/>
-            : null
-        }
-        {
-          Array.from(Array(5 - turn)).map((_, i) => (
-            <RowEmpty key={i}/>
-          ))
-        }
-      </div>
+      <GameBox
+      completedWords={completedWords}
+      gameStatus={gameStatus}
+      randomWord={randomWord}
+      setKeyboardStatus={setKeyboardStatus}
+      currentWord={currentWord}
+      turn={turn}
+      />
       <Keyboard keys={keyboardStatus} onKeyPressed={onKeyPressed} />
-    </>
+    </div>
+  </div>
   )
 }

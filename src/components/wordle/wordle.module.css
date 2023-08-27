@@ -4,3 +4,27 @@
     width: calc((size * 5) + (gap * 5));
     margin: 40px auto;
 }
+
+.wordleMainContainer {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.wordleMainContainerLight {
+    background-color: #ffffff;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.wordleContainer{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}

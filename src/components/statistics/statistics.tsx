@@ -1,4 +1,7 @@
+import { useContext } from 'react'
 import styles from '../modal.module.css'
+import stylesLight from '../modalLight.module.css'
+import { ThemeContext } from '../../context/themeContext'
 
 interface Props {
   statusGame: 'won' | 'lost'
@@ -12,22 +15,22 @@ interface Props {
 
 export const StatisticsModal = ({ statusGame, winCounter, amountOfGames, solution, showModal, setShowModal, timer }: Props) => {
   const handleCLoseModal = () => { setShowModal(false) }
-
+  const { isDarkmode } = useContext(ThemeContext)
   return (
         <>
         {
           showModal && (
-            <div className={styles.modalViewContainer}>
-              <div className={styles.modalContainer}>
+            <div className={isDarkmode ? styles.modalViewContainer : stylesLight.modalViewContainer}>
+              <div className={isDarkmode ? styles.modalContainer : stylesLight.modalContainer}>
                   <h2>Estadisticas</h2>
 
-                  <section className={styles.containesGameCount}>
-                    <div className={styles.gameCount}>
+                  <section className={isDarkmode ? styles.containesGameCount : stylesLight.containesGameCount}>
+                    <div className={isDarkmode ? styles.gameCount : stylesLight.gameCount}>
                       <h3>{amountOfGames}</h3>
                       <span>Juagadas</span>
                     </div>
 
-                    <div className={styles.gameCount}>
+                    <div className={isDarkmode ? styles.gameCount : stylesLight.gameCount}>
                       <h3>{winCounter}</h3>
                       <span>Victorias</span>
                     </div>
@@ -40,13 +43,13 @@ export const StatisticsModal = ({ statusGame, winCounter, amountOfGames, solutio
                     )
                   }
 
-                  <section className={styles.gameCount}>
+                  <section className={isDarkmode ? styles.gameCount : stylesLight.gameCount}>
                     <span>Siguiente Palabra</span>
                     <span>{Math.floor(timer / 60) }:{timer % 60}</span>
                   </section>
 
                   <section>
-                    <button className={styles.acceptButton} onClick={handleCLoseModal}>Aceptar</button>
+                    <button className={isDarkmode ? styles.acceptButton : stylesLight.acceptButton} onClick={handleCLoseModal}>Aceptar</button>
                   </section>
               </div>
             </div>

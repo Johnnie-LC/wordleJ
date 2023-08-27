@@ -1,4 +1,7 @@
+import { useContext } from 'react'
+import { ThemeContext } from '../../context/themeContext'
 import styles from '../modal.module.css'
+import stylesLight from '../modalLight.module.css'
 import Instructions from './instructions'
 
 interface Props {
@@ -7,16 +10,17 @@ interface Props {
 }
 
 export const InstructionsModal = ({ showModal, setShowModal }: Props) => {
+  const { isDarkmode } = useContext(ThemeContext)
   const handleCLoseModal = () => { setShowModal(item => !item) }
   return (
           <>
           {
             showModal && (
-              <div className={styles.modalViewContainer}>
-                <div className={styles.modalContainerInstructions}>
+              <div className={isDarkmode ? styles.modalViewContainer : stylesLight.modalViewContainer}>
+                <div className={isDarkmode ? styles.modalContainerInstructions : stylesLight.modalContainerInstructions}>
                     <Instructions />
                     <section>
-                        <button className={styles.acceptButton} onClick={handleCLoseModal}>!Jugar¡</button>
+                        <button className={isDarkmode ? styles.acceptButton : stylesLight.acceptButton} onClick={handleCLoseModal}>!Jugar¡</button>
                     </section>
                 </div>
               </div>

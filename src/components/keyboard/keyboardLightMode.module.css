@@ -1,9 +1,9 @@
 .keybase {
-    background-color: #565F7E;
+    background-color: #D3D6DA;
     cursor: pointer;
     border: none;
     border-radius: 3px;
-    color: white;
+    color: #56575E;
 
     display: flex;
     align-items: center;
@@ -17,20 +17,10 @@
     width: 638px;
     margin: 0 auto;
     gap: 9.57px;
-    background: #DADCE008;
+    background: #DADCE04D;
     padding: 25px 1px;
     border-radius: 10px;
 }
-
-/* .keyboardContainerLight {
-    composes: keyboardContainer;
-    background: #DADCE04D;
-} */
-
-/* .keyboardContainerLight > button {
-    color: #56575E;
-    background-color: #D3D6DA;
-} */
 
 .key{
     composes: keybase;
